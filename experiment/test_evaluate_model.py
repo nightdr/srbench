@@ -24,7 +24,9 @@ def test_evaluate_model(ml):
                                    ['est','hyper_params','complexity'])
 
     print('algorithm imported:',algorithm)
-    evaluate_model(dataset, 
+    print(algorithm.est.get_params())
+    print(algorithm.hyper_params)
+    evaluate_model(dataset,
                    results_path, 
                    random_state, 
                    ml,
@@ -32,7 +34,8 @@ def test_evaluate_model(ml):
                    algorithm.hyper_params, 
                    algorithm.complexity,
                    algorithm.model,
-                   test=True # testing
+                   test=True, # testing
+                   # skip_tuning=True
                   )
 
 
