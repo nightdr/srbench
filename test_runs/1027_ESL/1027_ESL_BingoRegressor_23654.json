@@ -1,0 +1,37 @@
+{
+    "dataset": "1027_ESL",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 0.0001,
+        "generations": 500,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos"
+        ],
+        "parallel": false,
+        "population_size": 100,
+        "stack_size": 10,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 274.87141654,
+    "time_time": 275.5250360965729,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 9,
+    "symbolic_model": "(0.31205201053398923)(X_2) + (0.3880736678493122)(X_1 + X_3)",
+    "mse_train": 0.31274638613417144,
+    "mae_train": 0.4273853628722719,
+    "r2_train": 0.8450816672053594,
+    "mse_test": 0.2954324329323328,
+    "mae_test": 0.4139574682531821,
+    "r2_test": 0.852719174311199
+}

@@ -243,7 +243,7 @@ if __name__ == '__main__':
 #SBATCH -n {N_CORES} 
 #SBATCH -J {JOB_NAME} 
 #SBATCH -A {A} -p {QUEUE} 
-#SBATCH --ntasks-per-node=1 --time={TIME}:00 
+#SBATCH --time={TIME}:00 
 #SBATCH --mem-per-cpu={M} 
 
 conda info 
@@ -261,6 +261,7 @@ source plg_modules.sh
            cmd=run_cmd,
            TIME=args.TIME
           )
+                    print("batch_script:", batch_script)
                     with open('tmp_script','w') as f:
                         f.write(batch_script)
 
