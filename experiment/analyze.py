@@ -235,6 +235,7 @@ if __name__ == '__main__':
             error_file = out_file[:-4] + '.err'
             
             if args.SLURM:
+                # TODO what is "source plg_modules.sh"?
                     batch_script = \
 """#!/usr/bin/bash 
 #SBATCH -o {OUT_FILE} 
@@ -246,8 +247,9 @@ if __name__ == '__main__':
 #SBATCH --time={TIME}:00 
 #SBATCH --mem-per-cpu={M} 
 
+module load anaconda
+conda activate srbench
 conda info 
-source plg_modules.sh
 
 {cmd}
 """.format(
