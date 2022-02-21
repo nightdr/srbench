@@ -24,7 +24,8 @@ hyper_params = [{
 
 
 est = SymbolicRegressor(population_size=100, stack_size=10,
-                        operators=["+", "-", "*", "/", "sin", "cos", ],
+                        operators=["+", "-", "*", "/",
+                                   "sin", "cos", "exp", "log"],
                         use_simplification=True,
                         crossover_prob=0.4, mutation_prob=0.4, metric="mae",
                         parallel=False, clo_alg="lm", max_time=1800)
