@@ -21,7 +21,8 @@ class SymbolicRegressor(RegressorMixin, BaseEstimator):
                  operators=None, use_simplification=False,
                  crossover_prob=0.4, mutation_prob=0.4,
                  metric="mse", parallel=False, clo_alg="lm",
-                 generations=10000, fitness_threshold=1.0e-6):
+                 generations=int(1e30), fitness_threshold=1.0e-16,
+                 max_time=1800):
         self.population_size = population_size
         self.stack_size = stack_size
 
@@ -42,6 +43,7 @@ class SymbolicRegressor(RegressorMixin, BaseEstimator):
 
         self.generations = generations
         self.fitness_threshold = fitness_threshold
+        self.max_time = max_time
 
         self.best_ind = None
 
@@ -89,8 +91,10 @@ class SymbolicRegressor(RegressorMixin, BaseEstimator):
             raise NotImplementedError
 
         self.archipelago = self._get_archipelago(X, y)
-        opt_result = self.archipelago.evolve_until_convergence(max_generations=self.generations,
-                                                               fitness_threshold=self.fitness_threshold)
+        opt_result = self.archipelago.evolve_until_convergence(
+            max_generations=self.generations,
+            fitness_threshold=self.fitness_threshold,
+            max_time=self.max_time)
         # print(opt_result.ea_diagnostics)
         self.best_ind = self.archipelago.hall_of_fame[0]
         # print("------------------hall of fame------------------", self.archipelago.hall_of_fame, sep="\n")
@@ -112,8 +116,7 @@ if __name__ == '__main__':
                              operators=["+", "-", "*"],
                              use_simplification=True,
                              crossover_prob=0.4, mutation_prob=0.4, metric="mae",
-                             parallel=False, clo_alg="lm", generations=500,
-                             fitness_threshold=1.0e-4)
+                             parallel=False, clo_alg="lm", max_time=1800)
 
     regr.fit(x, y)
     print(regr.best_ind)

@@ -1,4 +1,4 @@
-from .src.bingo.bingo.symbolic_regression.symbolic_regressor import SymbolicRegressor
+from bingo.symbolic_regression.symbolic_regressor import SymbolicRegressor
 
 hyper_params = [{
     "population_size": (100, 500, 2500),
@@ -27,8 +27,7 @@ est = SymbolicRegressor(population_size=100, stack_size=10,
                         operators=["+", "-", "*", "/", "sin", "cos", ],
                         use_simplification=True,
                         crossover_prob=0.4, mutation_prob=0.4, metric="mae",
-                        parallel=False, clo_alg="lm", generations=500,
-                        fitness_threshold=1.0e-4)
+                        parallel=False, clo_alg="lm", max_time=1800)
 
 
 def complexity(est):
