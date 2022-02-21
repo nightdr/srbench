@@ -1,8 +1,15 @@
 from .src.bingo.bingo.symbolic_regression.symbolic_regressor import SymbolicRegressor
 
 hyper_params = [{
-    "population_size": (10, 100),
-    # "stack_size": (10, 20, 30),
+    "population_size": (100, 500, 2500),
+    "stack_size": (16, 32, 64),
+
+    # ea (agefitnessea, deterministic) & island (coev of fitness predictors, fitness predictor, ) & simplification
+
+    # mutation and crossover rates
+
+    # pareto front vs. Hof operations,
+
     # "use_simplification": (True, False),
     # metric?
     # semi-hyperparam study
