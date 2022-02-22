@@ -4,6 +4,8 @@ from sklearn.base import BaseEstimator, RegressorMixin
 
 from bingo.evaluation.evaluation import Evaluation
 from bingo.evolutionary_algorithms.age_fitness import AgeFitnessEA
+from bingo.evolutionary_algorithms.deterministic_crowding import DeterministicCrowdingEA
+from bingo.evolutionary_optimizers.fitness_predictor_island import FitnessPredictorIsland
 from bingo.evolutionary_optimizers.island import Island
 from bingo.evolutionary_optimizers.parallel_archipelago import ParallelArchipelago
 from bingo.evolutionary_optimizers.serial_archipelago import SerialArchipelago
@@ -17,12 +19,13 @@ from bingo.symbolic_regression import AGraphGenerator, ExplicitRegression, \
 
 
 class SymbolicRegressor(RegressorMixin, BaseEstimator):
-    def __init__(self, population_size=100, stack_size=20,
+    def __init__(self, population_size=500, stack_size=32,
                  operators=None, use_simplification=False,
                  crossover_prob=0.4, mutation_prob=0.4,
                  metric="mse", parallel=False, clo_alg="lm",
                  generations=int(1e30), fitness_threshold=1.0e-16,
-                 max_time=1800):
+                 max_time=1800, evolutionary_algorithm="age fitness",
+                 island="normal"):
         self.population_size = population_size
         self.stack_size = stack_size
 
@@ -44,6 +47,16 @@ class SymbolicRegressor(RegressorMixin, BaseEstimator):
         self.generations = generations
         self.fitness_threshold = fitness_threshold
         self.max_time = max_time
+
+        if evolutionary_algorithm == "deterministic crowding":
+            self.evolutionary_algorithm = DeterministicCrowdingEA
+        else:
+            self.evolutionary_algorithm = AgeFitnessEA
+
+        if island == "fitness predictor":
+            self.island = FitnessPredictorIsland
+        else:
+            self.island = Island
 
         self.best_ind = None
 
@@ -71,11 +84,16 @@ class SymbolicRegressor(RegressorMixin, BaseEstimator):
         local_opt_fitness = ContinuousLocalOptimization(fitness, algorithm=self.clo_alg)
         evaluator = Evaluation(local_opt_fitness)
 
-        ea = AgeFitnessEA(evaluator, self.generator, self.crossover,
-                          self.mutation, self.crossover_prob, self.mutation_prob,
-                          self.population_size)
+        if self.evolutionary_algorithm == AgeFitnessEA:
+            ea = self.evolutionary_algorithm(evaluator, self.generator, self.crossover,
+                                             self.mutation, self.crossover_prob, self.mutation_prob,
+                                             self.population_size)
 
-        island = Island(ea, self.generator, self.population_size)
+        else:  # DeterministicCrowdingEA
+            ea = self.evolutionary_algorithm(evaluator, self.crossover, self.mutation,
+                                             self.crossover_prob, self.mutation_prob)
+
+        island = self.island(ea, self.generator, self.population_size)
 
         # TODO pareto front based on complexity?
         hof = HallOfFame(5)
@@ -116,7 +134,9 @@ if __name__ == '__main__':
                              operators=["+", "-", "*"],
                              use_simplification=True,
                              crossover_prob=0.4, mutation_prob=0.4, metric="mae",
-                             parallel=False, clo_alg="lm", max_time=1800)
+                             parallel=False, clo_alg="lm", generations=500, fitness_threshold=1.0e-4,
+                             evolutionary_algorithm="age fitness", island="normal")
+    print(regr.get_params())
 
     regr.fit(x, y)
     print(regr.best_ind)

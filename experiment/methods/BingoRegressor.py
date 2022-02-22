@@ -1,10 +1,13 @@
 from bingo.symbolic_regression.symbolic_regressor import SymbolicRegressor
 
 hyper_params = [{
-    "population_size": (100, 500, 2500),
-    "stack_size": (16, 32, 64),
+    # "population_size": (100, 500, 2500),
+    # "stack_size": (16, 32, 64),
+    "evolutionary_algorithm": ("age fitness", "deterministic crowding"),
+    "island": ("normal", "fitness predictor"),
+    "use_simplification": (False, True)
 
-    # ea (agefitnessea, deterministic) & island (coev of fitness predictors, fitness predictor, ) & simplification
+    # ea (agefitnessea, deterministic) & island (coev of fitness predictors, fitness predictor, ), & simplification
 
     # mutation and crossover rates
 
@@ -28,7 +31,9 @@ est = SymbolicRegressor(population_size=100, stack_size=10,
                                    "sin", "cos", "exp", "log"],
                         use_simplification=True,
                         crossover_prob=0.4, mutation_prob=0.4, metric="mae",
-                        parallel=False, clo_alg="lm", max_time=1800)
+                        parallel=False, clo_alg="lm", max_time=1800,
+                        evolutionary_algorithm="age fitness",
+                        island="normal")
 
 
 def complexity(est):
