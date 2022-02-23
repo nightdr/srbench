@@ -1,0 +1,40 @@
+{
+    "dataset": "192_vineyard",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 2500,
+        "stack_size": 64,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 7581.268869329,
+    "time_time": 7599.08918595314,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 23,
+    "symbolic_model": "log(((log(X_1) - (exp((sin(((X_0 - (6090.085188))/(X_0 - (6090.085188)))/((X_0 - (6090.085188))/(X_0 - (6090.085188)))))(log(sin((X_0 - (6090.085188))/(X_0 - (6090.085188))) + -19.747307)))))(X_0 - (6090.085188) + sin(((X_0 - (6090.085188))/(X_0 - (6090.085188)))/((X_0 - (6090.085188))/(X_0 - (6090.085188)))) - (-6092.264255)) + 13.812363)/(sin((X_0 - (6090.085188))/(X_0 - (6090.085188))) + -19.747307))",
+    "mse_train": 3.6983662253281833,
+    "mae_train": 1.5418547259262299,
+    "r2_train": 0.783778635119766,
+    "mse_test": 7.207932820971498,
+    "mae_test": 2.3390328958785696,
+    "r2_test": 0.7044782516389658
+}

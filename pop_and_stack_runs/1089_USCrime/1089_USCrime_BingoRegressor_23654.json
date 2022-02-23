@@ -1,0 +1,40 @@
+{
+    "dataset": "1089_USCrime",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 500,
+        "stack_size": 32,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 9884.250683860999,
+    "time_time": 9884.268124341965,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 29,
+    "symbolic_model": "(X_0)/(exp(exp((log(cos((log(log((X_8)(log(log(X_8))))))(log(X_6) + X_5)) - (X_4)))(((log((X_8)(log(log(X_8)))))/(X_4))/(1.805347)))) + (X_9)/(0.724347)) - (X_12)",
+    "mse_train": 77.01629538376083,
+    "mae_train": 6.6900096806057086,
+    "r2_train": 0.9482896799406371,
+    "mse_test": 423.8937662147653,
+    "mae_test": 16.043553188163465,
+    "r2_test": 0.6804201905994869
+}

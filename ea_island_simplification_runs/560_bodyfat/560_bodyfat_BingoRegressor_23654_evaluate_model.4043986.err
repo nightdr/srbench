@@ -1,0 +1,1 @@
+/uufs/notchpeak.peaks/sys/var/slurm/slurmd.spool/notch272//job4043986/slurm_script: line 15: 28412 Segmentation fault      python evaluate_model.py ../../../pmlb/datasets/560_bodyfat/560_bodyfat.tsv.gz -ml BingoRegressor -results_path ../ea_island_simplification_runs/560_bodyfat/ -seed 23654 -target_noise 0.0 -feature_noise 0.0

@@ -1,0 +1,1 @@
+/uufs/notchpeak.peaks/sys/var/slurm/slurmd.spool/notch204//job4044065/slurm_script: line 15: 15650 Segmentation fault      python evaluate_model.py ../../../pmlb/datasets/titanic/titanic.tsv.gz -ml BingoRegressor -results_path ../ea_island_simplification_runs/titanic/ -seed 23654 -target_noise 0.0 -feature_noise 0.0

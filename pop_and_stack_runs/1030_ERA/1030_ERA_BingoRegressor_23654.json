@@ -1,0 +1,40 @@
+{
+    "dataset": "1030_ERA",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 2500,
+        "stack_size": 32,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 12057.964487094,
+    "time_time": 12058.042579889297,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 7,
+    "symbolic_model": "(X_1 - (0.000029 - (X_0)))(0.395772)",
+    "mse_train": 2.6390030704031804,
+    "mae_train": 1.3212809865694064,
+    "r2_train": 0.31880334518109277,
+    "mse_test": 2.697406814362428,
+    "mae_test": 1.3333396855071753,
+    "r2_test": 0.3286692846285645
+}

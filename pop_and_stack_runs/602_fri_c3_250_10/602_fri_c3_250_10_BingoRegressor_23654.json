@@ -1,0 +1,40 @@
+{
+    "dataset": "602_fri_c3_250_10",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 500,
+        "stack_size": 32,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 11950.343521975,
+    "time_time": 11978.41797041893,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 31,
+    "symbolic_model": "(log(cos(cos(X_1 + cos((-12042.941915)/(588.060802 + sin((588.060802)/(X_1)) + X_3 + X_3 - ((X_9)(X_8) + X_9 - (sin((588.060802)/(X_1))))))))))(X_1 + cos((-12042.941915)/(588.060802 + sin((588.060802)/(X_1)) + X_3 + X_3 - ((X_9)(X_8) + X_9 - (sin((588.060802)/(X_1)))))) + X_1 + cos((-12042.941915)/(588.060802 + sin((588.060802)/(X_1)) + X_3 + X_3 - ((X_9)(X_8) + X_9 - (sin((588.060802)/(X_1))))))) + (4294866.047013)/((3592.370447)/(3592.370447)) + -4294866.091372",
+    "mse_train": 0.7079203381933037,
+    "mae_train": 0.6068781634657638,
+    "r2_train": 0.24778613963386875,
+    "mse_test": 0.936897004411186,
+    "mae_test": 0.7581029703356182,
+    "r2_test": 0.17012822634005142
+}

@@ -1,0 +1,40 @@
+{
+    "dataset": "225_puma8NH",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 2500,
+        "stack_size": 32,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 11996.359357159,
+    "time_time": 12024.515773773193,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 10,
+    "symbolic_model": "sin(X_1 + X_2 + ((X_2)((X_1)/(-642930.655358)))((X_1)/(-642930.655358)))",
+    "mse_train": 12.66006681023803,
+    "mae_train": 2.836170819778489,
+    "r2_train": 0.5978791677301146,
+    "mse_test": 12.975285674720155,
+    "mae_test": 2.88864518777068,
+    "r2_test": 0.594084002267992
+}

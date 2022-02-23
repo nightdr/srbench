@@ -1,0 +1,40 @@
+{
+    "dataset": "527_analcatdata_election2000",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 500,
+        "stack_size": 64,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 9148.560162851001,
+    "time_time": 9170.077785491943,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 17,
+    "symbolic_model": "X_9 + (0.478910)(cos(X_0 - ((-1735355.141560)/(446371.745464) + X_10 + log(-2398035.617274)))) - (-0.075716)",
+    "mse_train": 9642159.209172508,
+    "mae_train": 1568.7819003383383,
+    "r2_train": 0.9960502346028367,
+    "mse_test": 414853425.5058576,
+    "mae_test": 9476.877737841462,
+    "r2_test": 0.9674860303273144
+}

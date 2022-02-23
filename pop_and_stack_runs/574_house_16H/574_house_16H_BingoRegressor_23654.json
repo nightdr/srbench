@@ -1,0 +1,40 @@
+{
+    "dataset": "574_house_16H",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 2500,
+        "stack_size": 16,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 12012.41694145,
+    "time_time": 12040.781495571136,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 6,
+    "symbolic_model": "(0.002170)(log(cos(exp(X_3))))",
+    "mse_train": 2897752678.5189834,
+    "mae_train": 32541.764139750892,
+    "r2_train": 0.0004587066871442058,
+    "mse_test": 2586848625.1566987,
+    "mae_test": 31518.435658900788,
+    "r2_test": 0.0003166595088262003
+}

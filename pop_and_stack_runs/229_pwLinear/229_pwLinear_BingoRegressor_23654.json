@@ -1,0 +1,40 @@
+{
+    "dataset": "229_pwLinear",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 100,
+        "stack_size": 16,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 11622.961698079,
+    "time_time": 11650.240800142288,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 15,
+    "symbolic_model": "(((X_4)(((X_6 + X_4 - (X_0))(X_6 + X_4 - (X_0)))/(cos(-0.730658))) + (X_4)(((X_6 + X_4 - (X_0))(X_6 + X_4 - (X_0)))/(cos(-0.730658))))(-672.353524))(-0.000038)",
+    "mse_train": 13.258346283106258,
+    "mae_train": 2.841587686222121,
+    "r2_train": 0.3605433060284998,
+    "mse_test": 13.21659876187345,
+    "mae_test": 2.9442560264264785,
+    "r2_test": 0.23318341753626126
+}

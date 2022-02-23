@@ -1,0 +1,40 @@
+{
+    "dataset": "1199_BNG_echoMonths",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 500,
+        "stack_size": 16,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 12012.513893573001,
+    "time_time": 12040.810231685638,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 5,
+    "symbolic_model": "log(X_0) - ((X_0)/((X_0)/(X_0)))",
+    "mse_train": 150.45128067896465,
+    "mae_train": 9.415037609955142,
+    "r2_train": 0.397075338491224,
+    "mse_test": 157.0537916016643,
+    "mae_test": 9.65107722291693,
+    "r2_test": 0.3896788862121656
+}

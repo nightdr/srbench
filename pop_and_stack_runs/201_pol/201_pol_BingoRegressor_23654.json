@@ -1,0 +1,40 @@
+{
+    "dataset": "201_pol",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 100,
+        "stack_size": 16,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 11959.816457241,
+    "time_time": 11987.892171144485,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 9,
+    "symbolic_model": "log(cos(cos(cos(sin(X_4 + X_4)) + cos(X_4 + X_4))))",
+    "mse_train": 1547.9898512199468,
+    "mae_train": 28.076906109848288,
+    "r2_train": 0.10659238396505832,
+    "mse_test": 1599.3649027827696,
+    "mae_test": 28.585102451901935,
+    "r2_test": 0.0941627648357447
+}

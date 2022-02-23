@@ -1,0 +1,40 @@
+{
+    "dataset": "228_elusage",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 100,
+        "stack_size": 16,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 7056.4396375,
+    "time_time": 7073.046015024185,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 16,
+    "symbolic_model": "(X_0 + cos(X_0) + -0.465671)/((((X_0)/((X_0)(X_0)))/((X_0)(X_0)) + ((X_0)/((X_0)(X_0)))/((X_0)(X_0)) - (1208.601654))/(1048.707988)) + 0.062034",
+    "mse_train": 72.8625370796145,
+    "mae_train": 6.396182491529957,
+    "r2_train": 0.8726513683237104,
+    "mse_test": 748.5132609048485,
+    "mae_test": 13.531784265078114,
+    "r2_test": -0.5082187925776436
+}

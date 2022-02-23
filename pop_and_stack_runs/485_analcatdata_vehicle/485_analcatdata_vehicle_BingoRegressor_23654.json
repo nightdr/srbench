@@ -1,0 +1,40 @@
+{
+    "dataset": "485_analcatdata_vehicle",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 2500,
+        "stack_size": 64,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 8525.624717722,
+    "time_time": 8525.69302201271,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 36,
+    "symbolic_model": "((-0.486823)/((X_3)(log(X_3))) - (log(X_3)))(((-1.792053 + cos((sin((((X_3)/(X_3))/((log(log(X_3)))/(X_3)))/(9631.475438)))/(sin((((X_3)/(X_3))/((log(log(X_3)))/(X_3)))/(9631.475438)))))((cos(X_3))(sin((X_3 - (X_2))(X_3)))) + ((0.900506)(0.900506))((0.900506)(0.900506)) + X_0)((X_3)(log(X_3))))",
+    "mse_train": 51305.510270664534,
+    "mae_train": 148.20039431400684,
+    "r2_train": 0.31224949855586703,
+    "mse_test": 56980.26642139548,
+    "mae_test": 185.02913748825222,
+    "r2_test": 0.29582771904326166
+}

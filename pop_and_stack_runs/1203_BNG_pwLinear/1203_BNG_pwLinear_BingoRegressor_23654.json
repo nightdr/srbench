@@ -1,0 +1,40 @@
+{
+    "dataset": "1203_BNG_pwLinear",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 100,
+        "stack_size": 16,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 11981.442492058999,
+    "time_time": 12009.697915554047,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 16,
+    "symbolic_model": "((exp(cos(X_6) - (log(X_1)) + exp(X_6)) + exp(cos(X_6) - (log(X_1)) + exp(X_6)))/(sin(log(sin(X_9)))))(exp((exp(cos(X_6) - (log(X_1)) + exp(X_6)) + exp(cos(X_6) - (log(X_1)) + exp(X_6)))/(sin(log(sin(X_9))))))",
+    "mse_train": 20.194087679708346,
+    "mae_train": 3.611216323098402,
+    "r2_train": 0.0001246857286228975,
+    "mse_test": 20.03572920316958,
+    "mae_test": 3.602722434155494,
+    "r2_test": 0.0002889836027989423
+}

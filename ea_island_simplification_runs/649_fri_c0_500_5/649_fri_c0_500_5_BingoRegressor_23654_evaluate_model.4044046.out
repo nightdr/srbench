@@ -1,0 +1,25 @@
+
+     active environment : srbench
+    active env location : /uufs/chpc.utah.edu/common/home/u1164746/.conda/envs/srbench
+            shell level : 1
+       user config file : /uufs/chpc.utah.edu/common/home/u1164746/.condarc
+ populated config files : 
+          conda version : 4.7.10
+    conda-build version : 3.18.8
+         python version : 2.7.16.final.0
+       virtual packages : 
+       base environment : /uufs/chpc.utah.edu/sys/installdir/anaconda/2019.07  (read only)
+           channel URLs : https://repo.anaconda.com/pkgs/main/linux-64
+                          https://repo.anaconda.com/pkgs/main/noarch
+                          https://repo.anaconda.com/pkgs/r/linux-64
+                          https://repo.anaconda.com/pkgs/r/noarch
+          package cache : /uufs/chpc.utah.edu/sys/installdir/anaconda/2019.07/pkgs
+                          /uufs/chpc.utah.edu/common/home/u1164746/.conda/pkgs
+       envs directories : /uufs/chpc.utah.edu/common/home/u1164746/.conda/envs
+                          /uufs/chpc.utah.edu/sys/installdir/anaconda/2019.07/envs
+               platform : linux-64
+             user-agent : conda/4.7.10 requests/2.22.0 CPython/2.7.16 Linux/3.10.0-1160.36.2.el7.x86_64 centos/7.9.2009 glibc/2.17
+                UID:GID : 1372045:4000473
+             netrc file : None
+           offline mode : False
+

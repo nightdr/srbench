@@ -1,0 +1,40 @@
+{
+    "dataset": "621_fri_c0_100_10",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 500,
+        "stack_size": 32,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 9026.820621771,
+    "time_time": 9048.041424512863,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 31,
+    "symbolic_model": "(((-949.005704 + -949.005704 + (6600.221222 - (6600.221222))(-5716.424742))/(exp(X_1)))/(-39571.801001))(-0.721601 - (log(sin(cos(sin(X_7))) + X_9 + X_9 + (X_4)(X_4))) + log(X_5)) + 0.013099",
+    "mse_train": 0.8702296366349096,
+    "mae_train": 0.7174956612749012,
+    "r2_train": 0.07576701158897459,
+    "mse_test": 1.1499246916163701,
+    "mae_test": 0.8234732092040541,
+    "r2_test": -0.08863633965359341
+}

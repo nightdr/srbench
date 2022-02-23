@@ -1,0 +1,40 @@
+{
+    "dataset": "564_fried",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 2500,
+        "stack_size": 16,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 11985.164390984,
+    "time_time": 12013.308967590332,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 7,
+    "symbolic_model": "(sin(-769.690102) + sin(-769.690102))/((X_4)/(X_3))",
+    "mse_train": 25.188122713075973,
+    "mae_train": 4.084116113513917,
+    "r2_train": 0.00026886560271499604,
+    "mse_test": 25.000511008741093,
+    "mae_test": 4.065561207687301,
+    "r2_test": -0.0010789956040440085
+}

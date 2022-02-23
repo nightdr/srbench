@@ -1,0 +1,40 @@
+{
+    "dataset": "218_house_8L",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 500,
+        "stack_size": 16,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 11958.346181981,
+    "time_time": 11986.404963731766,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 15,
+    "symbolic_model": "(((X_1)((sin(X_5))/(X_5)))((sin(sin(X_4) - (X_4)))(sin(sin(X_4) - (X_4)))))/(exp(X_1) + X_1)",
+    "mse_train": 2879587855.912961,
+    "mae_train": 32106.360031307424,
+    "r2_train": 0.006724420947376353,
+    "mse_test": 2568659008.1778426,
+    "mae_test": 31101.489680086608,
+    "r2_test": 0.007346006679295636
+}

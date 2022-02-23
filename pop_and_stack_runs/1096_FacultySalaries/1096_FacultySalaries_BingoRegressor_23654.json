@@ -1,0 +1,40 @@
+{
+    "dataset": "1096_FacultySalaries",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 2500,
+        "stack_size": 16,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 8773.336891384999,
+    "time_time": 8773.371549129486,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 16,
+    "symbolic_model": "((sin(cos((5760.367729)/(X_3) + 9949.570499) - (X_3) - (-469.010563)))(X_3))(sin(cos((5760.367729)/(X_3) + 9949.570499) - (X_3) - (-469.010563))) - (0.075796)",
+    "mse_train": 7.244121000174181,
+    "mae_train": 1.764916029183145,
+    "r2_train": 0.6970081877409915,
+    "mse_test": 3.686622947077235,
+    "mae_test": 1.3049637529849518,
+    "r2_test": 0.6869023667203116
+}

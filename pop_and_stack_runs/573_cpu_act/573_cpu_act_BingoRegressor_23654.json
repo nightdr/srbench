@@ -1,0 +1,40 @@
+{
+    "dataset": "573_cpu_act",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 500,
+        "stack_size": 16,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 11955.830786183,
+    "time_time": 11983.887917041779,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 5,
+    "symbolic_model": "0.003124 - (((0.003124)(0.003124))(159.984449))",
+    "mse_train": 339.44059138395,
+    "mae_train": 10.64046964764747,
+    "r2_train": -2.441879822789872e-06,
+    "mse_test": 336.0371079682901,
+    "mae_test": 10.54102260613836,
+    "r2_test": -4.31243496712419e-06
+}

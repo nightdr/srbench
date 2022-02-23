@@ -1,0 +1,40 @@
+{
+    "dataset": "294_satellite_image",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 500,
+        "stack_size": 32,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 11937.668951999001,
+    "time_time": 11965.684698343277,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 16,
+    "symbolic_model": "(-0.171736)(X_14 + X_23 + (sin(X_21))(cos((X_23 + log(X_21))(X_16))))",
+    "mse_train": 2.91698245026371,
+    "mae_train": 1.3198440614466898,
+    "r2_train": 0.3997335313360124,
+    "mse_test": 2.940377011503359,
+    "mae_test": 1.3370411906939161,
+    "r2_test": 0.41411187811046424
+}

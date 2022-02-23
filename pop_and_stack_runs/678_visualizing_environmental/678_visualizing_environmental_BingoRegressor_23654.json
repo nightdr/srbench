@@ -1,0 +1,40 @@
+{
+    "dataset": "678_visualizing_environmental",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 2500,
+        "stack_size": 64,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 7892.7234554159995,
+    "time_time": 7911.319243192673,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 35,
+    "symbolic_model": "(((exp(X_0))/((cos(sin((-2346.337222 - (-2346.337222) + exp(X_0) + X_0)(exp(X_0)))))/((log(cos((-2346.337222 - (-2346.337222) + exp(X_0) + X_0)(exp(X_0))) - (-9168.974743 - (-9168.974743))))/(-44.156399)) - (46.823431)))((X_2)(0.987089 - (exp(X_1))) - (0.061709)))(-3.237743 + X_1) + -0.030359",
+    "mse_train": 12.508399934744354,
+    "mae_train": 2.574298349988756,
+    "r2_train": 0.08873443306946194,
+    "mse_test": 13.286624857396038,
+    "mae_test": 2.626481042976701,
+    "r2_test": -0.48377785696820674
+}

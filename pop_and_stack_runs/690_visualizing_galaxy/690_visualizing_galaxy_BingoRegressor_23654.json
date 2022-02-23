@@ -1,0 +1,40 @@
+{
+    "dataset": "690_visualizing_galaxy",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 500,
+        "stack_size": 64,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 11940.951134813,
+    "time_time": 11969.076225280762,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 28,
+    "symbolic_model": "(sin(X_1 - (-6138.698766 + -6138.698766)) + (-11289.582394)/((1192410.124412)(X_2)) - (0.032888))(sin(5126.980955 + sin(5126.980955) - (X_2)) - (cos((X_2)(log((X_2)/(sin(-2155.858144)))))))",
+    "mse_train": 315.1639261390798,
+    "mae_train": 13.849400851116785,
+    "r2_train": 0.9653368779957692,
+    "mse_test": 432.425943113454,
+    "mae_test": 16.06986825945055,
+    "r2_test": 0.9470147083309982
+}

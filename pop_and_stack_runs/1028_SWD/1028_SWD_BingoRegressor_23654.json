@@ -1,0 +1,40 @@
+{
+    "dataset": "1028_SWD",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 100,
+        "stack_size": 64,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 11990.596671314,
+    "time_time": 11990.590394735336,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 11,
+    "symbolic_model": "cos(log(sin(cos(4794.060371)))) - (sin((sin(cos(log(sin(cos(4794.060371))))))/((X_9)/(X_9))))",
+    "mse_train": 0.7066668015368762,
+    "mae_train": 0.6373335230506015,
+    "r2_train": -0.06000020230531433,
+    "mse_test": 0.6680001321728076,
+    "mae_test": 0.6200001942129382,
+    "r2_test": -0.06101827901091439
+}

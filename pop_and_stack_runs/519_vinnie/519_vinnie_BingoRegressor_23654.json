@@ -1,0 +1,40 @@
+{
+    "dataset": "519_vinnie",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 100,
+        "stack_size": 32,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 11925.326347772001,
+    "time_time": 11953.345463752747,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 24,
+    "symbolic_model": "(cos(cos((cos(exp(cos(sin(X_1 + X_1))) - ((X_1)((cos(sin(X_1 + X_1)))(sin(X_1 + X_1))))))/(((cos(sin(X_1 + X_1)))(sin(X_1 + X_1)))/(sin(X_1 + X_1))))))(X_1) - (3088.115509) - ((sin((cos(cos((cos(exp(cos(sin(X_1 + X_1))) - ((X_1)((cos(sin(X_1 + X_1)))(sin(X_1 + X_1))))))/(((cos(sin(X_1 + X_1)))(sin(X_1 + X_1)))/(sin(X_1 + X_1))))))(X_1) - (3088.115509)))(cos(X_1)) - (3088.065258))",
+    "mse_train": 2.255567622714444,
+    "mae_train": 1.190190331728311,
+    "r2_train": 0.7346473665042846,
+    "mse_test": 2.86200412977484,
+    "mae_test": 1.3373387063536253,
+    "r2_test": 0.7636946986330309
+}

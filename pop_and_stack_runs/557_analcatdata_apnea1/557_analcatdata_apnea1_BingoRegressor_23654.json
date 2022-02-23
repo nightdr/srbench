@@ -1,0 +1,40 @@
+{
+    "dataset": "557_analcatdata_apnea1",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 500,
+        "stack_size": 32,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 11988.533985551,
+    "time_time": 12016.765172243118,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 29,
+    "symbolic_model": "sin((log(cos(cos(((X_0)/(log((-1367109.625578 - (X_0) - (X_0) - (X_1))/(log(X_1) + log(X_1)) + -154720.567819)) + log(-73850.748113 - (log(-1367109.625578) + X_1)))((X_0)/(log((-1367109.625578 - (X_0) - (X_0) - (X_1))/(log(X_1) + log(X_1)) + -154720.567819)) + log(-73850.748113 - (log(-1367109.625578) + X_1))) + 6220.826895))))(cos(cos(((X_0)/(log((-1367109.625578 - (X_0) - (X_0) - (X_1))/(log(X_1) + log(X_1)) + -154720.567819)) + log(-73850.748113 - (log(-1367109.625578) + X_1)))((X_0)/(log((-1367109.625578 - (X_0) - (X_0) - (X_1))/(log(X_1) + log(X_1)) + -154720.567819)) + log(-73850.748113 - (log(-1367109.625578) + X_1))) + 6220.826895))))",
+    "mse_train": 11122783.354196507,
+    "mae_train": 955.5497462866989,
+    "r2_train": 0.04547724123978403,
+    "mse_test": 5206367.526421256,
+    "mae_test": 680.8886860741623,
+    "r2_test": 0.057884035325382
+}

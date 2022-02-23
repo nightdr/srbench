@@ -1,0 +1,40 @@
+{
+    "dataset": "635_fri_c0_250_10",
+    "algorithm": "BingoRegressor",
+    "params": {
+        "clo_alg": "lm",
+        "crossover_prob": 0.4,
+        "fitness_threshold": 1e-16,
+        "generations": 1000000000000000019884624838656,
+        "max_time": 180,
+        "metric": "mae",
+        "mutation_prob": 0.4,
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "sin",
+            "cos",
+            "exp",
+            "log"
+        ],
+        "parallel": false,
+        "population_size": 500,
+        "stack_size": 32,
+        "use_simplification": true
+    },
+    "random_state": 23654,
+    "process_time": 11969.449938038,
+    "time_time": 11969.426159381866,
+    "target_noise": 0.0,
+    "feature_noise": 0.0,
+    "model_size": 31,
+    "symbolic_model": "(-0.573912 + X_1 - (log(X_1)) + -0.573912 - (9013.590158 - (9013.590158)))((X_3 + X_2 - (cos(((X_5)((X_2)(X_4)))(X_0))))(53522.288092 - (53522.307497)) - (-0.024618) + (X_3 + X_2 - (cos(((X_5)((X_2)(X_4)))(X_0))))(53522.288092 - (53522.307497)) - (-0.024618)) + 0.013672",
+    "mse_train": 0.9181485986197964,
+    "mae_train": 0.7628122641984556,
+    "r2_train": 0.13829445186729739,
+    "mse_test": 0.6828217202841946,
+    "mae_test": 0.6320976193361042,
+    "r2_test": 0.13237624042605078
+}
