@@ -24,7 +24,7 @@ class SymbolicRegressor(RegressorMixin, BaseEstimator):
                  crossover_prob=0.4, mutation_prob=0.4,
                  metric="mse", parallel=False, clo_alg="lm",
                  generations=int(1e30), fitness_threshold=1.0e-16,
-                 max_time=1800, evolutionary_algorithm="age fitness",
+                 max_time=1800, max_evals=int(5e5), evolutionary_algorithm="age fitness",
                  island="normal"):
         self.population_size = population_size
         self.stack_size = stack_size
@@ -47,6 +47,7 @@ class SymbolicRegressor(RegressorMixin, BaseEstimator):
         self.generations = generations
         self.fitness_threshold = fitness_threshold
         self.max_time = max_time
+        self.max_evals = max_evals
 
         if evolutionary_algorithm == "deterministic crowding":
             self.evolutionary_algorithm = DeterministicCrowdingEA
@@ -93,15 +94,15 @@ class SymbolicRegressor(RegressorMixin, BaseEstimator):
             ea = self.evolutionary_algorithm(evaluator, self.crossover, self.mutation,
                                              self.crossover_prob, self.mutation_prob)
 
-        island = self.island(ea, self.generator, self.population_size)
-
         # TODO pareto front based on complexity?
         hof = HallOfFame(5)
+
+        island = self.island(ea, self.generator, self.population_size, hall_of_fame=hof)
 
         if self.parallel:
             return ParallelArchipelago(island, hall_of_fame=hof)
         else:
-            return SerialArchipelago(island, hall_of_fame=hof)
+            return island
 
     def fit(self, X, y, sample_weight=None):
         if sample_weight is not None:
@@ -112,7 +113,9 @@ class SymbolicRegressor(RegressorMixin, BaseEstimator):
         opt_result = self.archipelago.evolve_until_convergence(
             max_generations=self.generations,
             fitness_threshold=self.fitness_threshold,
-            max_time=self.max_time)
+            max_time=self.max_time,
+            max_fitness_evaluations=self.max_evals
+        )
         # print(opt_result.ea_diagnostics)
         self.best_ind = self.archipelago.hall_of_fame[0]
         # print("------------------hall of fame------------------", self.archipelago.hall_of_fame, sep="\n")

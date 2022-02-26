@@ -1,11 +1,11 @@
 from bingo.symbolic_regression.symbolic_regressor import SymbolicRegressor
 
 hyper_params = [{
-    # "population_size": (100, 500, 2500),
-    # "stack_size": (16, 32, 64),
-    "evolutionary_algorithm": ("age fitness", "deterministic crowding"),
-    "island": ("normal", "fitness predictor"),
-    "use_simplification": (False, True)
+    "population_size": (100, 500, 2500),
+    "stack_size": (16, 32, 64),
+    # "evolutionary_algorithm": ("age fitness", "deterministic crowding"),
+    # "island": ("normal", "fitness predictor"),
+    # "use_simplification": (False, True)
 
     # ea (agefitnessea, deterministic) & island (coev of fitness predictors, fitness predictor, ), & simplification
 
