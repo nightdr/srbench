@@ -1,17 +1,25 @@
 from bingo.symbolic_regression.symbolic_regressor import SymbolicRegressor
 
 hyper_params = [{
-    "population_size": (100, 500, 2500),
-    "stack_size": (16, 32, 64),
+    "population_size": (100, 500, 2500),  # 2 hr time increase
+    "stack_size": (16, 24, 32, 48, 64),
+    # age fitness, simplification True,
+    # mutation and crossover rates
+    # see if CLO tolerance matters
+
+    "island": ("normal", "fitness predictor"),
+
     # "evolutionary_algorithm": ("age fitness", "deterministic crowding"),
-    # "island": ("normal", "fitness predictor"),
+
     # "use_simplification": (False, True)
 
     # ea (agefitnessea, deterministic) & island (coev of fitness predictors, fitness predictor, ), & simplification
 
-    # mutation and crossover rates
-
     # pareto front vs. Hof operations,
+
+
+
+    # operations
 
     # "use_simplification": (True, False),
     # metric?
@@ -26,14 +34,14 @@ hyper_params = [{
 # fitness predictor island
 
 
-est = SymbolicRegressor(population_size=100, stack_size=10,
+est = SymbolicRegressor(population_size=100, stack_size=32,
                         operators=["+", "-", "*", "/",
                                    "sin", "cos", "exp", "log"],
                         use_simplification=True,
-                        crossover_prob=0.4, mutation_prob=0.4, metric="mae",
-                        parallel=False, clo_alg="lm", max_time=1800,
+                        crossover_prob=0.4, mutation_prob=0.4, metric="mse",
+                        parallel=False, clo_alg="BFGS", max_time=1800, max_evals=int(5e5),
                         evolutionary_algorithm="age fitness",
-                        island="normal")
+                        island="fitness predictor")
 
 
 def complexity(est):
@@ -49,7 +57,7 @@ if __name__ == '__main__':
     import numpy as np
     random.seed(7)
     np.random.seed(7)
-    x = np.linspace(-10, 10, 100).reshape([-1, 1])
+    x = np.linspace(-10, 10, 11).reshape([-1, 1])
     y = x**2 + 3.5*x**3
 
     est.fit(x, y)

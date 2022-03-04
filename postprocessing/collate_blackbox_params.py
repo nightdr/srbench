@@ -16,9 +16,9 @@ import os
 import sys
 from operator import itemgetter
 
-rdir = "../pop_and_stack_runs/"
-hyperparams = ["population_size", "stack_size"]
-save_path = r"../pop_and_stack_runs/black-box_results.feather"
+rdir = "../ea_island_simplification_runs/"
+hyperparams = ["island", "evolutionary_algorithm", "use_simplification"]
+save_path = r"../ea_island_simplification_runs/black-box_results.feather"
 
 if len(sys.argv) > 1:
     rdir = sys.argv[1]
