@@ -1,1 +1,0 @@
-/uufs/notchpeak.peaks/sys/var/slurm/slurmd.spool/notch274//job4043970/slurm_script: line 15: 267042 Segmentation fault      python evaluate_model.py ../../../pmlb/datasets/294_satellite_image/294_satellite_image.tsv.gz -ml BingoRegressor -results_path ../ea_island_simplification_runs/294_satellite_image/ -seed 23654 -target_noise 0.0 -feature_noise 0.0

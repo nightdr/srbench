@@ -1,1 +1,0 @@
-/uufs/notchpeak.peaks/sys/var/slurm/slurmd.spool/notch274//job4043969/slurm_script: line 15: 267046 Segmentation fault      python evaluate_model.py ../../../pmlb/datasets/230_machine_cpu/230_machine_cpu.tsv.gz -ml BingoRegressor -results_path ../ea_island_simplification_runs/230_machine_cpu/ -seed 23654 -target_noise 0.0 -feature_noise 0.0

@@ -24,8 +24,8 @@ class SymbolicRegressor(RegressorMixin, BaseEstimator):
                  crossover_prob=0.4, mutation_prob=0.4,
                  metric="mse", parallel=False, clo_alg="lm",
                  generations=int(1e30), fitness_threshold=1.0e-16,
-                 max_time=1800, max_evals=int(5e5), evolutionary_algorithm="age fitness",
-                 island="normal"):
+                 max_time=1800, max_evals=int(5e5), evolutionary_algorithm=AgeFitnessEA,
+                 island=Island, clo_threshold=1.0e-8):
         self.population_size = population_size
         self.stack_size = stack_size
 
@@ -49,15 +49,10 @@ class SymbolicRegressor(RegressorMixin, BaseEstimator):
         self.max_time = max_time
         self.max_evals = max_evals
 
-        if evolutionary_algorithm == "deterministic crowding":
-            self.evolutionary_algorithm = DeterministicCrowdingEA
-        else:
-            self.evolutionary_algorithm = AgeFitnessEA
+        self.evolutionary_algorithm = evolutionary_algorithm
+        self.island = island
 
-        if island == "fitness predictor":
-            self.island = FitnessPredictorIsland
-        else:
-            self.island = Island
+        self.clo_threshold = clo_threshold
 
         self.best_ind = None
 
@@ -82,7 +77,7 @@ class SymbolicRegressor(RegressorMixin, BaseEstimator):
 
         training_data = ExplicitTrainingData(X, y)
         fitness = ExplicitRegression(training_data=training_data, metric=self.metric)
-        local_opt_fitness = ContinuousLocalOptimization(fitness, algorithm=self.clo_alg)
+        local_opt_fitness = ContinuousLocalOptimization(fitness, algorithm=self.clo_alg, tol=self.clo_threshold)
         evaluator = Evaluation(local_opt_fitness)
 
         if self.evolutionary_algorithm == AgeFitnessEA:
@@ -110,14 +105,29 @@ class SymbolicRegressor(RegressorMixin, BaseEstimator):
             raise NotImplementedError
 
         self.archipelago = self._get_archipelago(X, y)
+
+        predictor_size = 1
+        if self.island == FitnessPredictorIsland:
+            predictor_size = self.archipelago._predictor_size
+        print("n_points per predictor:", predictor_size)
+        print("max evals:", self.max_evals * predictor_size)
+
         opt_result = self.archipelago.evolve_until_convergence(
             max_generations=self.generations,
             fitness_threshold=self.fitness_threshold,
             max_time=self.max_time,
-            max_fitness_evaluations=self.max_evals
+            max_fitness_evaluations=self.max_evals * predictor_size,
+            convergence_check_frequency=10
         )
+
         # print(opt_result.ea_diagnostics)
         self.best_ind = self.archipelago.hall_of_fame[0]
+        print(f"done with opt, best_ind: {self.best_ind}, fitness: {self.best_ind.fitness}")
+        # rerun CLO on best_ind with tighter tol
+        self.best_ind._needs_opt = True
+        self.archipelago._ea.evaluation.fitness_function.optimization_options = {"tol": 1e-16}
+        self.best_ind.fitness = self.archipelago._ea.evaluation.fitness_function(self.best_ind)
+        print(f"reran CLO, best_ind: {self.best_ind}, fitness: {self.best_ind.fitness}")
         # print("------------------hall of fame------------------", self.archipelago.hall_of_fame, sep="\n")
         # print("\nbest individual:", self.best_ind)
 
@@ -138,7 +148,8 @@ if __name__ == '__main__':
                              use_simplification=True,
                              crossover_prob=0.4, mutation_prob=0.4, metric="mae",
                              parallel=False, clo_alg="lm", generations=500, fitness_threshold=1.0e-4,
-                             evolutionary_algorithm="age fitness", island="normal")
+                             evolutionary_algorithm=AgeFitnessEA, island=Island,
+                             clo_threshold=1.0e-4)
     print(regr.get_params())
 
     regr.fit(x, y)

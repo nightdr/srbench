@@ -1,1 +1,0 @@
-/uufs/notchpeak.peaks/sys/var/slurm/slurmd.spool/notch204//job4044036/slurm_script: line 15: 10357 Segmentation fault      python evaluate_model.py ../../../pmlb/datasets/634_fri_c2_100_10/634_fri_c2_100_10.tsv.gz -ml BingoRegressor -results_path ../ea_island_simplification_runs/634_fri_c2_100_10/ -seed 23654 -target_noise 0.0 -feature_noise 0.0
