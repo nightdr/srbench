@@ -110,7 +110,7 @@ class SymbolicRegressor(RegressorMixin, BaseEstimator):
         if self.island == FitnessPredictorIsland:
             predictor_size = self.archipelago._predictor_size
         print("n_points per predictor:", predictor_size)
-        print("max evals:", self.max_evals * predictor_size)
+        print("max evals (scaled to predictors):", self.max_evals * predictor_size)
 
         opt_result = self.archipelago.evolve_until_convergence(
             max_generations=self.generations,
@@ -125,7 +125,7 @@ class SymbolicRegressor(RegressorMixin, BaseEstimator):
         print(f"done with opt, best_ind: {self.best_ind}, fitness: {self.best_ind.fitness}")
         # rerun CLO on best_ind with tighter tol
         self.best_ind._needs_opt = True
-        self.archipelago._ea.evaluation.fitness_function.optimization_options = {"tol": 1e-16}
+        self.archipelago._ea.evaluation.fitness_function.optimization_options = {"tol": 1e-6}
         self.best_ind.fitness = self.archipelago._ea.evaluation.fitness_function(self.best_ind)
         print(f"reran CLO, best_ind: {self.best_ind}, fitness: {self.best_ind.fitness}")
         # print("------------------hall of fame------------------", self.archipelago.hall_of_fame, sep="\n")
@@ -140,7 +140,7 @@ if __name__ == '__main__':
     import random
     random.seed(7)
     np.random.seed(7)
-    x = np.linspace(-10, 10, 100).reshape([-1, 1])
+    x = np.linspace(-10, 10, 1000).reshape([-1, 1])
     y = x**2 + 3.5*x**3
 
     regr = SymbolicRegressor(population_size=100, stack_size=10,
@@ -148,7 +148,7 @@ if __name__ == '__main__':
                              use_simplification=True,
                              crossover_prob=0.4, mutation_prob=0.4, metric="mae",
                              parallel=False, clo_alg="lm", generations=500, fitness_threshold=1.0e-4,
-                             evolutionary_algorithm=AgeFitnessEA, island=Island,
+                             evolutionary_algorithm=AgeFitnessEA, island=FitnessPredictorIsland,
                              clo_threshold=1.0e-4)
     print(regr.get_params())
 
