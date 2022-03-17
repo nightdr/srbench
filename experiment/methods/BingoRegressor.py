@@ -6,12 +6,12 @@ from bingo.evolutionary_optimizers.island import Island
 
 hyper_params = [
     # (100, 24), (100, 64), (500, 24), (500, 48), (2500, 16), (2500, 32)
-    {"population_size": 100, "stack_size": 24},
-    {"population_size": 100, "stack_size": 64},
-    {"population_size": 500, "stack_size": 24},
-    {"population_size": 500, "stack_size": 48},
-    {"population_size": 2500, "stack_size": 16},
-    {"population_size": 2500, "stack_size": 32}
+    {"population_size": (100), "stack_size": (24)},
+    {"population_size": (100), "stack_size": (64)},
+    {"population_size": (500), "stack_size": (24)},
+    {"population_size": (500), "stack_size": (48)},
+    {"population_size": (2500), "stack_size": (16)},
+    {"population_size": (2500), "stack_size": (32)}
 ]
 
 est = SymbolicRegressor(population_size=100, stack_size=24,
