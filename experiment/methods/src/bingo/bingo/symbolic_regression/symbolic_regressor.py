@@ -132,7 +132,10 @@ class SymbolicRegressor(RegressorMixin, BaseEstimator):
         # print("\nbest individual:", self.best_ind)
 
     def predict(self, X):
-        return self.best_ind.evaluate_equation_at(X)
+        output = self.best_ind.evaluate_equation_at(X)
+
+        # convert nan to 0, inf to large number, and -inf to small number
+        return np.nan_to_num(output, posinf=1e100, neginf=-1e100)
 
 
 if __name__ == '__main__':
