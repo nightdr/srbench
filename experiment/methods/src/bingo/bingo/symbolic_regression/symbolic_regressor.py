@@ -105,6 +105,7 @@ class SymbolicRegressor(RegressorMixin, BaseEstimator):
             raise NotImplementedError
 
         self.archipelago = self._get_archipelago(X, y)
+        print(f"archipelago: {type(self.archipelago)}")
 
         predictor_size = 1
         if self.island == FitnessPredictorIsland:
@@ -120,8 +121,10 @@ class SymbolicRegressor(RegressorMixin, BaseEstimator):
             convergence_check_frequency=10
         )
 
-        # print(opt_result.ea_diagnostics)
-        self.best_ind = self.archipelago.hall_of_fame[0]
+        if len(self.archipelago.hall_of_fame) == 0:  # most likely found sol in 0 gens
+            self.best_ind = self.archipelago.get_best_individual()
+        else:
+            self.best_ind = self.archipelago.hall_of_fame[0]
         print(f"done with opt, best_ind: {self.best_ind}, fitness: {self.best_ind.fitness}")
         # rerun CLO on best_ind with tighter tol
         self.best_ind._needs_opt = True
