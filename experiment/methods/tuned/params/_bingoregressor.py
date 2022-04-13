@@ -9,8 +9,8 @@ params = {
     "fitness_threshold": 1e-16,
     "generations": 1000000000000000019884624838656,
     "island": FitnessPredictorIsland,
-    "max_evals": 500000,
-    "max_time": 7200,
+    "max_evals": 1000000,
+    "max_time": 8*60*60,
     "metric": "mse",
     "mutation_prob": 0.45,
     "operators": [
@@ -26,6 +26,6 @@ params = {
     ],
     "parallel": False,
     "population_size": 500,
-    "stack_size": 32,
+    "stack_size": 24,
     "use_simplification": True
 }
