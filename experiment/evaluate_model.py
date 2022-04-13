@@ -136,7 +136,7 @@ def evaluate_model(dataset, results_path, random_state, est_name, est,
     ################################################## 
     # Fit models
     ################################################## 
-    print('training',grid_est)
+    print('training')
     t0p = time.process_time()
     t0t = time.time()
     with warnings.catch_warnings():
