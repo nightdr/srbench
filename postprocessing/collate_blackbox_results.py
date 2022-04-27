@@ -15,7 +15,7 @@ from tqdm import tqdm
 import os
 import sys
 
-rdir = '../ea_island_simplification_runs/'
+rdir = '../final_runs_1/'
 
 if len(sys.argv) > 1:
     rdir = sys.argv[1]
@@ -133,8 +133,8 @@ for col in ['algorithm','dataset']:
 ##########
 # save results
 ##########
-df_results.to_feather('../results/my_black-box_results.feather')
-print('results saved to ../results/my_black-box_results.feather')
+df_results.to_feather('../final_runs_1/my_black-box_results.feather')
+print('results saved to ../final_runs_1/my_black-box_results.feather')
 
 ########
 print('mean trial count:')

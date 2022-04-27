@@ -15,7 +15,7 @@ from tqdm import tqdm
 import os
 import sys
 
-rdir = '../results_sym_data/'
+rdir = '../ground_truth_runs_hochhalter/'
 if len(sys.argv) > 1:
     rdir = sys.argv[1]
 else:
@@ -108,6 +108,6 @@ df_results.loc[:,'symbolic_solution'] = df_results['symbolic_solution'] & ~(df_r
 ##########
 # save results
 ##########
-df_results.to_feather('../results/ground-truth_results.feather')
-print('results saved to ../results/ground-truth_results.feather')
+df_results.to_feather(rdir + 'ground-truth_results.feather')
+print(f'results saved to {rdir}ground-truth_results.feather')
 

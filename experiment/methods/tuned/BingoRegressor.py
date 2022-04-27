@@ -1,6 +1,6 @@
-from ..BingoRegressor import complexity, model, est
+from experiment.methods.BingoRegressor import complexity, model, est
 # from ..src.bingo.bingo.symbolic_regression.symbolic_regressor import SymbolicRegressor
-from .params._bingoregressor import params
+from experiment.methods.tuned.params._bingoregressor import params
 
 est.set_params(**params)
 est.max_time = 8*60*60  # 8 hours

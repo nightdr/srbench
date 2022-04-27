@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 def visualize_params(feather_path, hyperparams):
     df = pd.read_feather(feather_path)
 
+    print(df.columns)
     df["params"] = df["params"].replace(
         {"<class 'bingo.evolutionary_optimizers.fitness_predictor_island.FitnessPredictorIsland'>": "Fitness Predictor",
          "<class 'bingo.evolutionary_optimizers.island.Island'>": "Island",
@@ -32,8 +33,6 @@ def visualize_params(feather_path, hyperparams):
 
 
 if __name__ == '__main__':
-    visualize_params(r"../pop_and_stack_long/black-box_results.feather", ["population size", "stack size"])
-    visualize_params(r"../mutation_and_crossover/black-box_results.feather", ["crossover_rate", "mutation_rate"])
-    visualize_params(r"../ea_island_simplification_runs/black-box_results.feather", ["island", "evolutionary_algorithm"])
+    visualize_params(r"../final_runs_1/param_results.feather", ["population_size", "stack_size"])
 
     # TODO look at experiments with low r^2 values
