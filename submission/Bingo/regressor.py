@@ -1,8 +1,8 @@
-from bingo.symbolic_regression.symbolic_regressor import SymbolicRegressor
+from bingo.symbolic_regression.symbolic_regressor import SymbolicRegressor, CrossValRegressor
 from bingo.evolutionary_algorithms.age_fitness import AgeFitnessEA
 from bingo.evolutionary_optimizers.fitness_predictor_island import FitnessPredictorIsland
 
-from sklearn.model_selection import GridSearchCV, KFold
+from sklearn.model_selection import KFold
 
 hyper_params = [  # TODO narrow these down by looking at data
     # (100, 24), (100, 64), (500, 24), (500, 48), (2500, 16), (2500, 32)
@@ -10,8 +10,6 @@ hyper_params = [  # TODO narrow these down by looking at data
     {"population_size": [500], "stack_size": [24]},
     {"population_size": [2500], "stack_size": [32]}
 ]
-
-N_FOLDS = 3
 
 """
 est: a sklearn-compatible regressor.
@@ -27,11 +25,13 @@ non_tuned_est = SymbolicRegressor(population_size=500, stack_size=24,
                                   clo_threshold=1.0e-5)
 
 
+N_FOLDS = 3
+
 # use `N_FOLDS` grid search cross-validation to select hyper parameters
 cv = KFold(n_splits=N_FOLDS, shuffle=True)
 
-est = GridSearchCV(non_tuned_est, cv=cv, param_grid=hyper_params,
-                   verbose=3, n_jobs=1, scoring="r2", error_score=0.0)
+est = CrossValRegressor(non_tuned_est, cv=cv, param_grid=hyper_params,
+                        verbose=3, n_jobs=1, scoring="r2", error_score=0.0)
 
 
 def model(est, X=None):
@@ -65,7 +65,7 @@ def model(est, X=None):
                 new_model = new_model.replace(k,v)
         ```
     """
-    model_str = str(est.best_ind)
+    model_str = str(est.get_best_individual())
 
     # replace X_# with data variables names
     mapping = {'X_' + str(i): k for i, k in enumerate(X.columns)}

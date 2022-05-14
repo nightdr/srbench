@@ -1,4 +1,4 @@
-from submission.Bingo.regressor import est as BingoEst, model as bingo_model
+from submission.Bingo.regressor import est as BingoEst
 
 hyper_params = []
 
@@ -6,11 +6,11 @@ est = BingoEst
 
 
 def complexity(est):
-    return est.best_ind.get_complexity()
+    return est.get_best_individual().get_complexity()
 
 
 def model(est):
-    return bingo_model(est, X=None)
+    return str(est.get_best_individual()).replace(")(", ")*(").replace("^", "**")
 
 
 if __name__ == '__main__':
