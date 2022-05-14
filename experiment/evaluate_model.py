@@ -20,13 +20,14 @@ import os
 import inspect
 from utils import jsonify
 from symbolic_utils import get_sym_model
+from datetime import datetime
 
 def evaluate_model(dataset, results_path, random_state, est_name, est, 
                    hyper_params, complexity, model, test=False, 
                    target_noise=0.0, feature_noise=0.0, 
                    n_samples=10000, scale_x = True, scale_y = True,
                    pre_train=None, skip_tuning=False, sym_data=False):
-
+    print("Start time:", datetime.now().strftime("%H:%M:%S"))
     print(40*'=','Evaluating '+est_name+' on ',dataset,40*'=',sep='\n')
 
     np.random.seed(random_state)
@@ -219,6 +220,8 @@ def evaluate_model(dataset, results_path, random_state, est_name, est,
 
     # with open(save_file + '_cv_results.json', 'w') as out:
     #     json.dump(jsonify(cv_results), out, indent=4)
+
+    print("End time:", datetime.now().strftime("%H:%M:%S"))
 
 ################################################################################
 # main entry point

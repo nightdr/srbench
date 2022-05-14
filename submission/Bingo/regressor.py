@@ -2,31 +2,36 @@ from bingo.symbolic_regression.symbolic_regressor import SymbolicRegressor
 from bingo.evolutionary_algorithms.age_fitness import AgeFitnessEA
 from bingo.evolutionary_optimizers.fitness_predictor_island import FitnessPredictorIsland
 
-hyper_params = [
+from sklearn.model_selection import GridSearchCV, KFold
+
+hyper_params = [  # TODO narrow these down by looking at data
     # (100, 24), (100, 64), (500, 24), (500, 48), (2500, 16), (2500, 32)
     {"population_size": [100], "stack_size": [24]},
-    {"population_size": [100], "stack_size": [64]},
     {"population_size": [500], "stack_size": [24]},
-    {"population_size": [500], "stack_size": [48]},
-    {"population_size": [2500], "stack_size": [16]},
     {"population_size": [2500], "stack_size": [32]}
 ]
+
+N_FOLDS = 3
 
 """
 est: a sklearn-compatible regressor.
 """
-est = SymbolicRegressor(population_size=500, stack_size=24,
-                        operators=["+", "-", "*", "/",
-                                   "sin", "cos", "exp", "log"],
-                        use_simplification=True,
-                        crossover_prob=0.3, mutation_prob=0.45, metric="mse",
-                        parallel=False, clo_alg="lm", max_time=2*60*60, max_evals=int(5e5),
-                        evolutionary_algorithm=AgeFitnessEA,
-                        island=FitnessPredictorIsland,
-                        clo_threshold=1.0e-5)
+non_tuned_est = SymbolicRegressor(population_size=500, stack_size=24,
+                                  operators=["+", "-", "*", "/",
+                                             "sin", "cos", "exp", "log",
+                                             "sqrt"],
+                                  use_simplification=True,
+                                  crossover_prob=0.3, mutation_prob=0.45, metric="mse",
+                                  parallel=False, clo_alg="lm", max_time=100, max_evals=int(1e19),
+                                  evolutionary_algorithm=AgeFitnessEA,
+                                  clo_threshold=1.0e-5)
 
-# TODO wrapping in CV class?
-# want to tune your estimator? wrap it in a sklearn CV class.
+
+# use `N_FOLDS` grid search cross-validation to select hyper parameters
+cv = KFold(n_splits=N_FOLDS, shuffle=True)
+
+est = GridSearchCV(non_tuned_est, cv=cv, param_grid=hyper_params,
+                   verbose=3, n_jobs=1, scoring="r2", error_score=0.0)
 
 
 def model(est, X=None):
@@ -70,10 +75,26 @@ def model(est, X=None):
     model_str = model_str.replace(")(", ")*(").replace("^", "**")  # replace operators for sympy
     return model_str
 
-################################################################################
-# Optional Settings
-################################################################################
 
+# for calculating time per cross-validation run using
+# grid search, not halving grid search!
+def get_cv_time(total_time):
+    return total_time / (len(hyper_params) * N_FOLDS + 1)  # have to train each hyperparam
+    # set on `N_FOLDS` then also need to retrain final model
+
+
+def pre_train_fn(est, X, y):
+    """set max_time in seconds based on length of X."""
+    if len(X) <= 1000:
+        max_time = get_cv_time(60 * 60 - 10)  # 1 hour with 10 seconds of slack
+    else:
+        max_time = get_cv_time(10 * 60 * 60 - 10)  # 10 hours with 10 seconds of slack
+    est.set_params(max_time)
+
+
+eval_kwargs = {
+    "pre_train": pre_train_fn
+}
 
 """
 eval_kwargs: a dictionary of variables passed to the evaluate_model()
@@ -101,21 +122,3 @@ Options
             y: training labels.
 """
 
-def my_pre_train_fn(est, X, y):
-    """In this example we adjust FEAT generations based on the size of X 
-       versus relative to FEAT's batch size setting. 
-    """
-    if est.batch_size < len(X):
-        est.gens = int(est.gens*len(X)/est.batch_size)
-    print('FEAT gens adjusted to',est.gens)
-    # adjust max dim
-    est.max_dim=min(max(est.max_dim, X.shape[1]), 20)
-    print('FEAT max_dim set to',est.max_dim)
-
-# define eval_kwargs.
-eval_kwargs = dict(
-                   pre_train=my_pre_train_fn,
-                   test_params = {'gens': 5,
-                                  'pop_size': 10
-                                 }
-                  )
