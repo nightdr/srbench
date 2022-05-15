@@ -13,6 +13,7 @@ dependencies:
     - shogun-cpp=6.1.4
     - wheel=0.35.*
     - numpy>=1.14.3
+    - mpi4py
     - pip
     - pip:
         - eigency==1.77
