@@ -31,7 +31,7 @@ N_FOLDS = 3
 cv = KFold(n_splits=N_FOLDS, shuffle=True)
 
 est = CrossValRegressor(non_tuned_est, cv=cv, param_grid=hyper_params,
-                        verbose=3, n_jobs=1, scoring="r2", error_score=0.0)
+                        verbose=3, n_jobs=1, scoring="r2", error_score="raise")
 
 
 def model(est, X=None):
