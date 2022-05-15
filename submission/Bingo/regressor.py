@@ -1,11 +1,11 @@
 from bingo.symbolic_regression.symbolic_regressor import SymbolicRegressor, CrossValRegressor
 from bingo.evolutionary_algorithms.age_fitness import AgeFitnessEA
-from bingo.evolutionary_optimizers.fitness_predictor_island import FitnessPredictorIsland
 
 from sklearn.model_selection import KFold
 
-hyper_params = [  # TODO narrow these down by looking at data
-    # (100, 24), (100, 64), (500, 24), (500, 48), (2500, 16), (2500, 32)
+hyper_params = [
+    # narrowed to 3 by looking at most commonly chosen
+    # among previous SRBench run
     {"population_size": [100], "stack_size": [24]},
     {"population_size": [500], "stack_size": [24]},
     {"population_size": [2500], "stack_size": [32]}
@@ -86,10 +86,10 @@ def get_cv_time(total_time):
 def pre_train_fn(est, X, y):
     """set max_time in seconds based on length of X."""
     if len(X) <= 1000:
-        max_time = get_cv_time(60 * 60 - 10)  # 1 hour with 10 seconds of slack
+        max_time = get_cv_time(60 * 60 - 100)  # 1 hour with 100 seconds of slack
     else:
-        max_time = get_cv_time(10 * 60 * 60 - 10)  # 10 hours with 10 seconds of slack
-    est.set_params(max_time)
+        max_time = get_cv_time(10 * 60 * 60 - 100)  # 10 hours with 100 seconds of slack
+    est.set_max_time(new_max_time=max_time)
 
 
 eval_kwargs = {
