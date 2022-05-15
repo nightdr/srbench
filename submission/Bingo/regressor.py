@@ -20,7 +20,7 @@ non_tuned_est = SymbolicRegressor(population_size=500, stack_size=24,
                                              "sqrt"],
                                   use_simplification=True,
                                   crossover_prob=0.3, mutation_prob=0.45, metric="mse",
-                                  parallel=False, clo_alg="lm", max_time=100, max_evals=int(1e19),
+                                  parallel=False, clo_alg="lm", max_time=350, max_evals=int(1e19),
                                   evolutionary_algorithm=AgeFitnessEA,
                                   clo_threshold=1.0e-5)
 
@@ -88,7 +88,7 @@ def pre_train_fn(est, X, y):
     if len(X) <= 1000:
         max_time = get_cv_time(60 * 60 - 100)  # 1 hour with 100 seconds of slack
     else:
-        max_time = get_cv_time(10 * 60 * 60 - 100)  # 10 hours with 100 seconds of slack
+        max_time = get_cv_time(10 * 60 * 60 - 1000)  # 10 hours with 1000 seconds of slack
     est.set_max_time(new_max_time=max_time)
 
 
